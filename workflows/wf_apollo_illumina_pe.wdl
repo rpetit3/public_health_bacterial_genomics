@@ -3,6 +3,7 @@ version 1.0
 import "wf_read_QC_trim.wdl" as read_qc
 import "../tasks/task_qc_utils.wdl" as qc
 import "../tasks/task_taxon_id.wdl" as taxon_id
+import "../tasks/task_gene_id.wdl" as gene_id
 import "../tasks/task_denovo_assembly.wdl" as assembly
 import "../tasks/task_versioning.wdl" as versioning
 
@@ -16,6 +17,7 @@ workflow apollo_illumina_pe {
     String seq_method = "ILLUMINA"
     File read1_raw
     File read2_raw
+    Boolean run_abricate=false
   }
 
   call read_qc.read_QC_trim {
@@ -46,6 +48,13 @@ workflow apollo_illumina_pe {
     input:
       assembly = shovill_pe.assembly_fasta,
       samplename = samplename
+  }
+  if (run_abricate) {
+    call gene_id.abricate_one_sample {
+      input:
+        assembly_fasta = shovill_pe.assembly_fasta,
+        samplename = samplename
+    }
   }
   call versioning.version_capture{
     input:
@@ -87,6 +96,9 @@ workflow apollo_illumina_pe {
     Float gambit_distance = gambit.gambit_distance
     String gambit_taxon = gambit.gambit_taxon
     String gambit_rank = gambit.gambit_rank
+    
+    File? abricate_results = abricate_one_sample.abricate_results
+    String? abricate_database = abricate_one_sample.abricate_database
 
   }
 }

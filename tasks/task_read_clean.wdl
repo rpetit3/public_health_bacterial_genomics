@@ -79,6 +79,7 @@ task bbduk_pe {
     File read1_trimmed
     File read2_trimmed
     String samplename
+    Int mem_size_gb
     String docker = "quay.io/staphb/bbtools:38.76"
   }
   command <<<
@@ -114,6 +115,7 @@ task bbduk_se {
     File read1_trimmed
     String samplename
     String docker="quay.io/staphb/bbtools:38.76"
+    Int mem_size_gb
   }
   command <<<
     # date and version control
