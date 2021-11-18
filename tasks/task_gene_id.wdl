@@ -15,10 +15,9 @@ task abricate_one_sample {
     String abricate_database = database
   }
   runtime {
-    memory: "1 GB"
-    cpu: 1
-    docker: "quay.io/theiagen/utility:1.1"
-    disks: "local-disk 10 HDD"
-    dx_instance_type: "mem1_ssd1_v2_x2" 
+    memory: "8 GB"
+    cpu: 4
+    docker: "quay.io/staphb/abricate:1.0.0"
+    disks: "local-disk 100 HDD"
   }
 }
