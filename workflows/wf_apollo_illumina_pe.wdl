@@ -18,6 +18,7 @@ workflow apollo_illumina_pe {
     File read1_raw
     File read2_raw
     Boolean run_abricate=false
+    Boolean run_gamma=false
   }
 
   call read_qc.read_QC_trim {
@@ -51,6 +52,13 @@ workflow apollo_illumina_pe {
   }
   if (run_abricate) {
     call gene_id.abricate_one_sample {
+      input:
+        assembly_fasta = shovill_pe.assembly_fasta,
+        samplename = samplename
+    }
+  }
+  if (run_gamma) {
+    call gene_id.gamma_one_sample {
       input:
         assembly_fasta = shovill_pe.assembly_fasta,
         samplename = samplename
