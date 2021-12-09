@@ -107,6 +107,11 @@ workflow apollo_illumina_pe {
     
     File? abricate_results = abricate_one_sample.abricate_results
     String? abricate_database = abricate_one_sample.abricate_database
+    
+    File? gamma_results = gamma_one_sample.gamma_results
+    String? gamma_database_version = gamma_one_sample.gamma_database_version
+    String? gamma_docker = gamma_one_sample.gamma_docker
+    
 
   }
 }
