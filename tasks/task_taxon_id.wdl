@@ -360,3 +360,61 @@ task tbprofiler_one_sample_ont {
     maxRetries:   3
   }
 }
+task pmga_one_sample {
+  # Inputs
+  input {
+    File assembly
+    String samplename
+    String species_name
+    String pmga_docker_image = "quay.io/staphb/pmga:3.0.2"
+  }
+  command <<<
+    # capture date and version
+    # Print and save date
+    date | tee DATE
+    # Print and save version
+    pmga --version > VERSION && sed -i -e 's/^/pmga /' VERSION
+    # Run pmga on the input assembly with the --all flag and output with samplename prefix
+    pmga ~{samplename} --blastdir /pmga/blastdbs/ --species ~{species_name} -t 16 -o ./
+
+    python3 <<CODE
+    import csv
+    with open("./~{samplename}.txt",'r') as tsv_file:
+      tsv_reader=csv.reader(tsv_file, delimiter="\t")
+      tsv_data=list(tsv_reader)
+      tsv_dict=dict(zip(tsv_data[0], tsv_data[1]))
+      with open ("SPECIES", 'wt') as Species:
+        kleb_species=tsv_dict['species']
+        Species.write(kleb_species)
+      with open ("PREDICTION", 'wt') as Prediction:
+        prediction=tsv_dict['pred']
+        Prediction.write(pred)
+      with open ("GENES_PRESENT", 'wt') as Genes_Present:
+        genes_pres=tsv_dict['genes_present']
+        Genes_Present.write(genes_pres)
+      with open ("NOTES", 'wt') as Notes:
+        notes_out=tsv_dict['notes']
+        Notes.write(notes_out)
+    CODE
+  >>>
+  output {
+    File pmga_output_file = "~{samplename}.txt"
+    File pmga_gff_output = "~{samplename}.gff.gz"
+    File pmga_loci_counts = "~{samplename}-loci-counts.txt"
+    File pmga_blast_raw = "~{samplename}-blast-raw-results.json.gz"
+    File pmga_blast_final_results = "~{samplename}-blast-final-results.json.gz"
+    File pmga_allele_matrix = "~{samplename}-allele-matrix.txt"
+    String pmga_version = read_string("VERSION")
+    String pmga_species = read_string("SPECIES")
+    String pmga_prediction = read_string("PREDICTION")
+    String pmga_genes_present = read_string("GENES_PRESENT")
+    String pmga_notes = read_string("NOTES")
+  }
+  runtime {
+    docker: "~{pmga_docker_image}"
+    memory: "32 GB"
+    cpu: 16
+    disks: "local-disk 100 SSD"
+    maxRetries: 3
+  }
+}

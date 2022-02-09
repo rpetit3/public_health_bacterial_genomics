@@ -30,3 +30,8 @@ workflows:
    primaryDescriptorPath: /workflows/wf_tbprofiler_ont.wdl
    testParameterFiles:
     - empty.json
+ - name: PMGA
+   subclass: WDL
+   primaryDescriptorPath: /workflows/wf_pmga.wdl
+   testParameterFiles:
+    - empty.json
