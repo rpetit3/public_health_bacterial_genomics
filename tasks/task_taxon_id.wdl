@@ -365,8 +365,8 @@ task pmga_one_sample {
   input {
     File assembly
     String samplename
-    String? species_name = "neisseria"
-    String? pmga_docker_image = "quay.io/staphb/pmga:3.0.2"
+    String? species_name
+    String pmga_docker_image = "quay.io/staphb/pmga:3.0.2"
   }
   command <<<
     # capture date and version
@@ -375,7 +375,7 @@ task pmga_one_sample {
     # Print and save version
     pmga --version > VERSION && sed -i -e 's/^/pmga /' VERSION
     # Run pmga on the input assembly with the --all flag and output with samplename prefix
-    pmga ~{samplename} --blastdir /pmga/blastdbs/ --species ~{species_name} -t 16 -o ./
+    pmga ~{samplename} --prefix ~{samplename} --blastdir /pmga/blastdbs/ --species ~{species_name} -t 16 -o ./
 
     python3 <<CODE
     import csv
