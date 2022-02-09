@@ -13,14 +13,13 @@ workflow pmga_wf {
     input:
       assembly = assembly,
       samplename = samplename,
-      species_name = species_name,
-      pmga_docker_image = pmga_docker_image
+      species_name = species_name
     }
   call versioning.version_capture{
     input:
   }
   output {
-    String pmga_wf_version = version_capture.pmga_version
+    String pmga_wf_version = version_capture.version
     String pmga_wf_analysis_date = version_capture.date
 
     File pmga_wf_report = pmga_one_sample.pmga_output_file
