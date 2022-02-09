@@ -19,7 +19,7 @@ workflow pmga_wf {
     input:
   }
   output {
-    String pmga_wf_version = version_capture.pmga_version
+    String pmga_wf_version = version_capture.phbg_version
     String pmga_wf_analysis_date = version_capture.date
 
     File pmga_wf_report = pmga_one_sample.pmga_output_file
