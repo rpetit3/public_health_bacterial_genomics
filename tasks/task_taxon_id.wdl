@@ -375,11 +375,11 @@ task pmga_one_sample {
     # Print and save version
     pmga --version > VERSION && sed -i -e 's/^/pmga /' VERSION
     # Run pmga on the input assembly with the --all flag and output with samplename prefix
-    pmga ~{samplename} --prefix ~{samplename} --blastdir /pmga/blastdbs/ --species ~{species_name} -t 16 -o "./"
+    pmga ~{samplename} --prefix ~{samplename} --blastdir /pmga/blastdbs/ --species ~{species_name} -t 16 -o ~{samplename}
 
     python3 <<CODE
     import csv
-    with open("./~{samplename}.txt",'r') as tsv_file:
+    with open("~{samplename}/~{samplename}.txt",'r') as tsv_file:
       tsv_reader=csv.reader(tsv_file, delimiter="\t")
       tsv_data=list(tsv_reader)
       tsv_dict=dict(zip(tsv_data[0], tsv_data[1]))
@@ -398,12 +398,12 @@ task pmga_one_sample {
     CODE
   >>>
   output {
-    File pmga_output_file = "~{samplename}.txt"
-    File pmga_gff_output = "~{samplename}.gff.gz"
-    File pmga_loci_counts = "~{samplename}-loci-counts.txt"
-    File pmga_blast_raw = "~{samplename}-blast-raw-results.json.gz"
-    File pmga_blast_final_results = "~{samplename}-blast-final-results.json.gz"
-    File pmga_allele_matrix = "~{samplename}-allele-matrix.txt"
+    File pmga_output_file = "~{samplename}/~{samplename}.txt"
+    File pmga_gff_output = "~{samplename}/~{samplename}.gff.gz"
+    File pmga_loci_counts = "~{samplename}/~{samplename}-loci-counts.txt"
+    File pmga_blast_raw = "~{samplename}/~{samplename}-blast-raw-results.json.gz"
+    File pmga_blast_final_results = "~{samplename}/~{samplename}-blast-final-results.json.gz"
+    File pmga_allele_matrix = "~{samplename}/~{samplename}-allele-matrix.txt"
     String pmga_version = read_string("VERSION")
     String pmga_species = read_string("SPECIES")
     String pmga_prediction = read_string("PREDICTION")
