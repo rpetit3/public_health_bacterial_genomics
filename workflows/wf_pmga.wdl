@@ -7,8 +7,7 @@ workflow pmga_wf {
   input {
     File assembly
     String samplename
-    String? species_name
-    String? pmga_docker_image
+    String? species_name = "neisseria"
     }
   call taxon.pmga_one_sample {
     input:
