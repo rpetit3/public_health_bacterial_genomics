@@ -15,7 +15,7 @@ workflow pmga_wf {
       samplename = samplename,
       species_name = species_name
     }
-  call versioning.version_capture{
+  call versioning.version_capture {
     input:
   }
   output {
