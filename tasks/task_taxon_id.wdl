@@ -384,11 +384,11 @@ task pmga_one_sample {
       tsv_data=list(tsv_reader)
       tsv_dict=dict(zip(tsv_data[0], tsv_data[1]))
       with open ("SPECIES", 'wt') as Species:
-        kleb_species=tsv_dict['species']
-        Species.write(kleb_species)
+        pmga_species=tsv_dict['species']
+        Species.write(pmga_species)
       with open ("PREDICTION", 'wt') as Prediction:
         prediction=tsv_dict['pred']
-        Prediction.write(pred)
+        Prediction.write(prediction)
       with open ("GENES_PRESENT", 'wt') as Genes_Present:
         genes_pres=tsv_dict['genes_present']
         Genes_Present.write(genes_pres)
