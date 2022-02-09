@@ -375,7 +375,7 @@ task pmga_one_sample {
     # Print and save version
     pmga --version > VERSION && sed -i -e 's/^/pmga /' VERSION
     # Run pmga on the input assembly with the --all flag and output with samplename prefix
-    pmga ~{samplename} --prefix ~{samplename} --blastdir /pmga/blastdbs/ --species ~{species_name} -t 16 -o ./
+    pmga ~{samplename} --prefix ~{samplename} --blastdir /pmga/blastdbs/ --species ~{species_name} -t 16 -o "./"
 
     python3 <<CODE
     import csv
