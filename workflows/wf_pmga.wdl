@@ -31,7 +31,6 @@ workflow pmga_wf {
     File pmga_wf_blast_final_results = pmga_one_sample.pmga_blast_final_results
     File pmga_wf_allele_matrix = pmga_one_sample.pmga_allele_matrix
 
-    String pmga_wf_version = pmga_one_sample.pmga_version
     String pmga_wf_species = pmga_one_sample.pmga_species
     String pmga_wf_prediction = pmga_one_sample.pmga_prediction
     String pmga_wf_genes_present = pmga_one_sample.pmga_genes_present
