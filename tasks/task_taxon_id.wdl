@@ -365,7 +365,7 @@ task pmga_one_sample {
   input {
     File assembly
     String samplename
-    String species_name? = "neisseria"
+    String species_name = "neisseria"
     String pmga_docker_image = "quay.io/staphb/pmga:3.0.2"
   }
   command <<<
