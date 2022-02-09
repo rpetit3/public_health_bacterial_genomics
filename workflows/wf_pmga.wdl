@@ -8,7 +8,7 @@ workflow pmga_wf {
     File assembly
     String samplename
     String? species_name = "neisseria"
-    String pmga_docker_image = "quay.io/staphb/pmga:3.0.2"
+    String pmga_docker_image? = "quay.io/staphb/pmga:3.0.2"
     }
   call taxon.pmga_one_sample {
     input:
