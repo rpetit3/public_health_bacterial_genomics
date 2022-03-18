@@ -202,6 +202,9 @@ workflow theiaprok_illumina_pe {
     File? sistr_allele_json = merlin_magic.sistr_allele_json
     File? sister_allele_fasta = merlin_magic.sistr_allele_fasta
     File? sistr_cgmlst = merlin_magic.sistr_cgmlst
+    String? sistr_serogroup = merlin_magic.sistr_serogroup
+    String? sistr_cgmlst_ST = merlin_magic.sistr_cgmlst_ST
+    String? sistr_serovar = merlin_magic.sistr_serovar
     String? sistr_version = merlin_magic.sistr_version
     File? seqsero2_report = merlin_magic.seqsero2_report
     String? seqsero2_version = merlin_magic.seqsero2_version
