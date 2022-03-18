@@ -63,7 +63,6 @@ task sistr_output_parser_one_sample {
       with codecs.open("./input.tsv",'r') as tsv_file:
         tsv_reader=csv.reader(tsv_file, delimiter="\t")
         tsv_data=list(tsv_reader)
-
         if len(tsv_data)==1:
           tsv_data.append(['NA']*len(tsv_data[0]))
         tsv_dict=dict(zip(tsv_data[0], tsv_data[1]))
