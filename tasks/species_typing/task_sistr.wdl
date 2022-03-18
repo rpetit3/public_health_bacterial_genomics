@@ -11,7 +11,7 @@ task sistr {
     Int? cpu = 4
 
     # Parameters
-    # --use-full-cgmlst-db  Use the full set of cgMLST alleles which can include highly similar alleles. By default the smaller "centroid" alleles or representative alleles are used for each marker. 
+    # --use-full-cgmlst-db  Use the full set of cgMLST alleles which can include highly similar alleles. By default the smaller "centroid" alleles or representative alleles are used for each marker.
     Boolean use_full_cgmlst_db = false
   }
   command <<<
@@ -26,7 +26,7 @@ task sistr {
       --output-prediction ~{samplename} \
       --output-format tab \
       ~{assembly}
-    
+
     mv ~{samplename}.tab ~{samplename}.tsv
   >>>
   output {
@@ -43,4 +43,64 @@ task sistr {
     disks: "local-disk 50 SSD"
     preemptible: 0
   }
+}
+
+task sistr_output_parser_one_sample {
+    meta {
+      description: "Python and bash codeblocks for parsing the output files from sistr."
+    }
+    input {
+      File sistr_tsv
+      String docker = "python:slim"
+    }
+    command <<<
+      # Set WDL input variable to input.tsv file
+      cat "~{sistr_tsv}" > input.tsv
+      # Parse outputs using python3
+      python3 <<CODE
+      import csv
+      import codecs
+      with codecs.open("./input.tsv",'r') as tsv_file:
+        tsv_reader=csv.reader(tsv_file, delimiter="\t")
+        tsv_data=list(tsv_reader)
+
+        if len(tsv_data)==1:
+          tsv_data.append(['NA']*len(tsv_data[0]))
+        tsv_dict=dict(zip(tsv_data[0], tsv_data[1]))
+        with codecs.open ("SISTR_SG", 'wt') as Sistr_SG:
+          sistr_sg=tsv_dict['serogroup']
+          if sistr_sg=='':
+            sistr_sg='NA'
+          else:
+            sistr_sg=sistr_sg
+          Sistr_SG.write(sistr_sg)
+        with codecs.open ("SISTR_CGMLST_ST", 'wt') as Sistr_cgmlst_ST:
+          sistr_cgmlst_st=tsv_dict['cgmlst_ST']
+          if sistr_cgmlst_st=='':
+            sistr_cgmlst_st='NA'
+          else:
+            sistr_cgmlst_st=sistr_cgmlst_st
+          Sistr_cgmlst_ST.write(sistr_cgmlst_st)
+        with codecs.open ("SISTR_SV", 'wt') as Sist_SV:
+          sistr_sv=tsv_dict['serovar']
+          if sistr_sv=='':
+            sistr_sv='NA'
+          else:
+            sistr_sv=sistr_sv
+          Sistr_SV.write(sistr_sv)
+      CODE
+    >>>
+    runtime {
+      docker: "~{docker}"
+      memory: "4 GB"
+      cpu: 2
+      disks: "local-disk 50 HDD"
+      dx_instance_type: "mem1_ssd1_v2_x2"
+      maxRetries: 3
+    }
+    output {
+      String sistr_serogroup = read_string("SISTR_SG")
+      String sistr_cgmlst_ST = read_string("SISTR_CGMLST_ST")
+      String sistr_serovar = read_string("SISTR_SV")
+    }
 }
