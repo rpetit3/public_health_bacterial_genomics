@@ -40,12 +40,12 @@ workflow merlin_magic {
   }
   if (merlin_tag == "Salmonella") {
     call sistr.sistr {
-      input: 
+      input:
         assembly = assembly,
         samplename = samplename
     }
     call seqsero2.seqsero2_pe as seqsero2 {
-      input: 
+      input:
         read1 = read1,
         read2 = read2,
         samplename = samplename
@@ -81,6 +81,9 @@ workflow merlin_magic {
   File? sistr_allele_json = sistr.sistr_allele_json
   File? sistr_allele_fasta = sistr.sistr_allele_fasta
   File? sistr_cgmlst = sistr.sistr_cgmlst
+  String? sistr_serogroup = sistr.sistr_serogroup
+  String? sistr_cgmlst_ST = sistr.sistr_cgmlst_ST
+  String? sistr_serovar = sistr.sistr_serovar
   String? sistr_version = sistr.sistr_version
   File? seqsero2_report = seqsero2.seqsero2_report
   String? seqsero2_version = seqsero2.seqsero2_version
