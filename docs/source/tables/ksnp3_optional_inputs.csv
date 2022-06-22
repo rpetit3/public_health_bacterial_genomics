@@ -1,0 +1,6 @@
+Task,Variable Name,Data Type,Description,Default
+ksnp3_task,CPUs,Int,CPUs allocated to snp detection and phylogenetic analysis using kSNP3,4
+ksnp3_task,docker_image,String,Docker image used for running kSNP3,quay.io/staphb/ksnp3:3.1
+ksnp3_task,kmer_size,Int,Kmer size used by kSNP3,19
+ksnp3_task,mem_size_gb,Int,Memory allocated to kSNP3,8
+version_capture,timezone,String,User time zone in valid Unix TZ string (e.g. America/New_York),None

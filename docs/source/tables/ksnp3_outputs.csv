@@ -1,0 +1,6 @@
+Output Name,Data Type,Description
+ksnp3_wf_analysis_date,String,Date of analysis
+ksnp3_docker,String,Docker image for running kSNP3
+ksnp3_snp_matrix,File,SNP distance matrix in tsv format
+ksnp3_tree,File,Phylogenetic tree inferred by kSNP3 in .tre format
+ksnp3_wf_version,String,Version of PHBG respository used for analysis
