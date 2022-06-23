@@ -1,4 +1,4 @@
-Task,Input Variable ,Data Type ,Description 
+Task,Input Variable ,Data Type ,Description
 ksnp3,assembly_fasta,Array[File],Array of genome assemblies in fasta format to analyze using kSNP3
 ksnp3,cluster_name,String,Name of cluster to use for output files; cannot contain spaces
 ksnp3,samplename,Array[String],Array of samples names to analyze using kSNP3

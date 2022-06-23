@@ -1,0 +1,10 @@
+Task,Variable Name,Data Type,Description,Default
+mashtree_task,cpu,Int,CPUs allocated to MashTree task,16
+mashtree_task,genomesize,Int,Size of input genome used for mash sketch,5000000
+mashtree_task,kmerlength,Int,Length of kmer used by MashTree,21
+mashtree_task,memory,Int,Memory allocated to MashTree task,64
+mashtree_task,mindepth,Int,Minimum abundance used by mash,5
+mashtree_task,sketchsize,Int,Number of (non-redundant) min-hashes that are kept by MashTree,10000
+mashtree_task,sort_order,String,Sort order for tree,"ABC"
+mashtree_task,truncLength,Int,How many characters to keep in a filename,250
+version_capture,timezone,String,User time zone in valid Unix TZ string (e.g. America/New_York),None

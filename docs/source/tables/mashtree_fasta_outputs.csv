@@ -1,0 +1,6 @@
+Output Name,Data Type,Description
+mashtree_matrix,File,Distance matrix for samples included in analysis
+mashtree_tree,File,Neighbor-joining tree in Newick (.nwk) format for samples included in analysis
+mashtree_version,String,Version of MashTree used for analysis
+mashtree_wf_analysis_date,String,Date of analysis
+mashtree_wf_version,String,Version of PHBG respository used for analysis
