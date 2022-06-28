@@ -9,12 +9,9 @@ Welcome to Public Health Bacterial Genomics (Theiagen)'s documentation!
 .. toctree::
    :maxdepth: 2
    :caption: Contents:
+   :titlesonly:
 
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+   PHBG Overview <overview>
+   TheiaProk <theiprok>
+   about_theiagen
+   license
