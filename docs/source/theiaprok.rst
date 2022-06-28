@@ -46,6 +46,5 @@ Core sample characterization: Abricate (which db?); AMRFinderplus for ARG detect
         **BBDuk** Bushnell B. BBTools software package. URL http://sourceforge. net/projects/bbmap. 2014;578:579.
 
         **fastq-scan** Petit RA, III. 2020. fastq-scan. Output FASTQ summary statistics in JSON format. https://github.com/rpetit3/fastq-scan.
-
-
+|
       
