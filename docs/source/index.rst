@@ -12,6 +12,6 @@ Public Health Bacterial Genomics Documentation
    :caption: Contents:
 
    PHBG Overview <overview>
-   TheiaProk <theiprok>
+   TheiaProk <theiaprok>
    about_theiagen
    license
