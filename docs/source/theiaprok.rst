@@ -28,6 +28,7 @@ QC: FASTQ-SCAN (reads before and after trimming); Quast (assemblies)
 Core sample characterization: Abricate (which db?); AMRFinderplus for ARG detection; Gambit for taxa identification; MLST (available MLST schemes) 
 
 **Taxa-specific subworkflows**
+
 * **Salmonella spp:** SeqSero2, SISTR
 * **Escherichia spp:** SeroTypeFinder, ECTyper
 * **Klebsiella spp:** Kleborate
