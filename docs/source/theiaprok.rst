@@ -25,17 +25,21 @@ De Novo assembly: Shovill
 
 QC: FASTQ-SCAN (reads before and after trimming); Quast (assemblies)
 
-Core sample characterization: Abricate (which db?); AMRFinderplus for ARG detection; Gambit for taxa identification; MLST (available MLST schemes) 
+Core sample characterization: AMRFinderplus for ARG detection; Gambit for taxa identification; MLST (available MLST schemes) 
+
+`NCBI's AMRFinderplus <https://github.com/ncbi/amr/wiki>`_ identifies gene sequences associated with acquired antibiotic resistance. For a list of curated organisms that can be found `here <https://github.com/theiagen/public_health_bacterial_genomics/tree/main/docs/source/tables/amrfinderplus_organisms.csv>`_,  acquired genes that are almost universal in a taxa ("intrinsic reistsance" genes) are filtered out, and/or mutational resistance and/or genes for virulence and stress response can be identified. 
+
+Implementation of NCBI's AMRFinderplus in TheiaProk queries sequences against genes in NCBI's curated database, > reporting sequences with > 90% identity (or a or curated threshold if it exists for the taxa) and a minimum coverage of 50 %. 
 
 **Taxa-specific subworkflows**
 
-* **Salmonella spp:** SeqSero2, SISTR
+* **Salmonella spp:** SeqSero2, SISTR, GenoTyphi
 * **Escherichia spp:** SeroTypeFinder, ECTyper
 * **Klebsiella spp:** Kleborate
-* **Listeria spp:** LisSero
+* **Listeria spp:** LisSero, Legsta
 * **Mycobacterium tuberculosis:** TB-profiler
 
-**Outputs:** The workflow produces trimmed reads, assembly files, QC metrics and genome characteristics, depending on taxa analyzed. For more details about TheiaProk output files, please see [theiaprok_illumina_pe_outputs.csv].
+**Outputs:** The workflow produces trimmed reads, assembly files, QC metrics and genome characteristics, depending on taxa analyzed. For more details about TheiaProk output files, please see the table of `outputs <>`_
 
 .. toggle-header::
     :header: **References**
