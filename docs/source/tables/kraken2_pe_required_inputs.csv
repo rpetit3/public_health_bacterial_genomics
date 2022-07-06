@@ -1,0 +1,5 @@
+Task,Input Variable,Data Type,Description
+kraken2_pe_wf,kraken2_db,File,Database used for querying reads by Kraken2
+kraken2_pe_wf,read1,File,Forward Illumina read in FASTQ file format
+kraken2_pe_wf,read2,File,Reverse Illumina read in FASTQ file format
+kraken2_pe_wf,samplename,Name of the sample being analyzed

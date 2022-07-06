@@ -1,0 +1,8 @@
+Task,Variable Name,Data Type,Description,Default
+kraken2_pe,classified_out,String,File extension for classified reads,"classified#.fastq"
+kraken2_pe,cpu,Int,CPUs allocated to Kraken2 task,4
+kraken2_pe,docker,String,Docker image used for running Kraken2,quay.io/staphb/kraken2:2.1.2-no-db
+kraken2_pe,kraken2_args,String,Optional arguments included for Kraken2,None
+kraken2_pe,memory,Int,Memory allocated to Kraken2,32
+kraken2_pe,unclassified_out,String,File extension for unclassified reads,"unclassified#.fastq"
+version_capture,timezone,String,User time zone in valid Unix TZ string (e.g. America/New_York),None
