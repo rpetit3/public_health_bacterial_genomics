@@ -1,0 +1,9 @@
+Output Name,Data Type,Description
+kraken2_classified_read1,File,FASTQ file of reads that were classified by Kraken2
+kraken2_classified_report,File,Compressed Kraken2 standard output file detailing taxonomic assignment data for each read in the input file; see https://github.com/DerrickWood/kraken2/wiki/Manual
+kraken2_docker,String,Docker image used for running Kraken2
+kraken2_se_wf_analysis_date,String,Date of Analysis
+kraken2_se_wf_version,String,Version of PHBG respository used for analysis
+kraken2_report,File,Kraken2 report file; see https://github.com/DerrickWood/kraken2/wiki/Manual
+kraken2_unclassified_read1,File,FASTQ file of reads that were not classified by Kraken2
+kraken2_version,String,Version of Kraken2 used for analysis

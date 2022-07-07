@@ -1,0 +1,4 @@
+Task,Input Variable,Data Type,Description
+kraken2_se_wf,kraken2_db,File,Database used for querying reads by Kraken2
+kraken2_se_wf,read1,File,Sequencing read file in FASTQ file format
+kraken2_se_wf,samplename,Name of the sample being analyzed
