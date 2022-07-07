@@ -1,0 +1,12 @@
+Output Name,Data Type,Description
+amrfinderplus_all_report,File,"Tsv file detailing all antimicrobial resistance, stress, and virulence gene detection data from AMRFinderPlus"
+amrfinderplus_amr_genes,String,"List of all antimicrobial resistance, stress, and virulence genes detected in analyzed sample"
+amrfinderplus_amr_report,File,Tsv file detailing antimicrobial resistance gene detection data from AMRFinderPlus 
+amrfinderplus_db_verison,String,Version of AMRFinderPlus database used for analysis
+amrfinderplus_stress_genes,String,List of stress genes detected in analyzed sample
+amrfinderplus_stress_report,File,Tsv file detailing stress gene detection data from AMRFinderPlus
+amrfinderplus_version,String,Version of AMRFinderPlus used for analysis
+amrfinderplus_virulence_genes,String,List of virulence genes detected in analyzed sample
+amrfinderplus_virulence_report,File,Tsv file detailing virulence gene detection data from AMRFinderPlus
+amrfinderplus_wf_analysis_date,String,Date of analysis
+amrfinderplus_wf_version,String,Version of PHBG respository used for analysis

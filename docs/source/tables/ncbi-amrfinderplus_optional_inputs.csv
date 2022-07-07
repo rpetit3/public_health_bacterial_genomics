@@ -1,0 +1,7 @@
+Task,Variable Name,Data Type,Description,Default
+amrfinderplus_nuc,cpu,Int,"CPUs allocated to antimicrobial resistance, stress, and virulence gene detection",4
+amrfinderplus_nuc,docker,String,Docker image for running AMRFinderPlus,quay.io/staphb/ncbi-amrfinderplus:3.10.24
+amrfinderplus_nuc,mincov,Int,Minimum proportion of reference gene covered for a BLAST-based hit (Methods BLAST or PARTIAL),0.5 (50%)
+amrfinderplus_nuc,minid,Int,Minimum identity for a blast-based hit (Methods BLAST or PARTIAL),0.9 (90%) or curated threshold if it exists
+amrfinderplus_nuc,organism,String,Organism to be used for taxonomic-specific gene detection; see list using amrfinder --list_organisms,None
+version_capture,timezone,String,User time zone in valid Unix TZ string (e.g. America/New_York),None
