@@ -27,11 +27,21 @@ gambit_predicted_taxon_rank,String,Rank of taxonomy predicted for the sample (ge
 gambit_report,File,Gambit results in a machine-readable format meant to be used in pipelines
 gambit_version,String,Version of gambit used for taxonomic identification of genome assemblies
 genome_length,Int,Genome length estimated by Quast from assembly 
+genotyphi_final_genotype,String,Final genotype call predicted by Genotyphi
+genotyphi_genotype_confidence,String,"Measure of confidence in the final genotype call, summarising read support across all levels in the hierarchy (lineage, clade, subclade, etc)"
+genotyphi_mykrobe_json,File,Json file output by Mykrobe (parsed to produce genotyphi_report_tsv)
+genotyphi_report_tsv,File,Tsv file detailing output of Genotyphi
+genotyphi_species,String,"Species call from Mykrobe (Typhi or unknown; determined by matching to Typhi STs from the 7-locus MLST scheme)"
+genotyphi_st_probes_percent_coverage,Float,Percent coverage of the Typhi ST probes
+genotyphi_version,String,Version of Genotyphi used for genotyping of Salmonella Typhi via Mykrobe (https://github.com/katholt/genotyphi/)
 kleborate_genomic_resistance_mutations,String,Antimicrobial resistance mutations detected in analyzed sample 
 kleborate_key_resistance_genes,String,Antimicrobial resistance genes detected in analyzed sample
 kleborate_mlst_sequence_type,String,MLST of analyzed sample
 kleborate_output_file,File,Tsv file detailing results of kleborate for typing of Klebsiella genomes
 kleborate_version,String,Version of kleborate used for typing of samples assigned to the Klebsiella taxon
+legsta_predicted_sbt,String,Sequence-based type predicted by Legsta for samples assigned to Legionella pneumophila by Gambit
+legsta_results,File,Legsta report for samples assigned to Legionella pneumophila by Gambit
+legsta_version,String,Version of Legsta (https://github.com/tseemann/legsta) used for sequence-based typing of Legionella pneumophila 
 lissero_results,File,Tsv file detailing results of lissero for serogroup typing prediction of Listeria genomes
 lissero_version,String,Version of lissero used for serogroup typing prediction for samples assigned to the Listeria taxon
 n50_value,Int,The length of the shortest contig for which longer and equal length contigs cover at least 50 % of the assembly as determined by quast
