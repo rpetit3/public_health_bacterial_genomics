@@ -1,0 +1,13 @@
+Output Name,Data Type,Description
+kleborate_bla_resistance_genes,String,Beta-lactamase resistance genes detected in the analyzed sample
+kleborate_esbl_resistance_genes,String,Extended-spectrum beta-lactamase resistance genes detected in the analyzed sample
+kleborate_key_resistance_genes,String,Antimicrobial resistance genes detected in analyzed sample
+kleborate_mlst_sequence_type,String,MLST of analyzed sample
+kleborate_num_resistance_genes,String,Number of antimicrobial resistance genes detected in analyzed sample
+kleborate_report,File,Tsv file detailing results of kleborate 
+kleborate_resistance_mutations,String,Antimicrobial resistance mutations detected in analyzed sample 
+kleborate_resistance_score,String,"Resistance score assigned by kleborate; see https://github.com/katholt/Kleborate/wiki/Scores-and-counts"
+kleborate_version,String,Version of kleborate used for typing of sample
+kleborate_virulence_score,String,"Virulence score assigned by kleborate; see https://github.com/katholt/Kleborate/wiki/Scores-and-counts"
+kleborate_wf_analysis_date,String,Date of analysis
+kleborate_wf_version,String,Version of PHBG repository used for analysis

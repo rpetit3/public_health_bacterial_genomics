@@ -1,0 +1,3 @@
+Task,Input Variable ,Data Type ,Description
+kleborate_wf,assembly_fasta,File,Assembly file for sample being analyzed
+kleborate_wf,samplename,String,Sample name for sample being analyzed
