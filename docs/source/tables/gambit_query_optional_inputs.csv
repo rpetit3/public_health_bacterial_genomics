@@ -1,0 +1,5 @@
+Task,Variable Name,Data Type,Description,Default
+gambit,docker,String,Docker image for running gambit,quay.io/staphb/gambit:0.4.0
+gambit,gambit_db_genomes,File,Genome database used for taxonomic assignment by gambit,Default from docker image
+gambit,gambit_db_signatures,File,File of pre-calculated signatures for reference genomes in genome database,Default from docker image
+version_capture,timezone,String,User time zone in valid Unix TZ string (e.g. America/New_York),None

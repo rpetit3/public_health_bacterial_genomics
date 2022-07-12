@@ -1,0 +1,11 @@
+Output Name,Data Type,Description
+gambit_closest_genomes,File,Csv file listing genomes in the gambit database that are most similar to the analyzed sample 
+gambit_db_version,String,Version of database used for taxonomic identification of genome assemblies by gambit
+gambit_docker,String,Docker image for taxonomic indentification of genome assemblies by gambit
+gambit_predicted_taxon,String,Taxon predicted for analyzed sample
+gambit_predicted_taxon_rank,String,Rank of taxonomy predicted for the sample (genus or species)
+gambit_query_wf_analysis_date,String,Date of analysis
+gambit_query_wf_verison,String,Version of PHBG repository used for analysis
+gambit_report,File,Gambit results in a machine-readable format meant to be used in pipelines
+gambit_version,String,Version of gambit used for taxonomic identification of genome assemblies
+
