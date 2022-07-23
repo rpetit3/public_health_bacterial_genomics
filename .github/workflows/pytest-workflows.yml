@@ -35,8 +35,13 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
+        # For every workflow, test it with MiniWDL and Cromwell
         tag: ["${{ fromJson(needs.changes.outputs.workflows) }}"]
         engine: ["miniwdl", "cromwell"]
+    defaults:
+      run:
+        # Play nicely with miniconda
+        shell: bash -l {0}
     steps:
       # Checkout the repo
       - name: Checkout theiagen/public_health_bacterial_genomics
@@ -53,7 +58,7 @@ jobs:
       - name: Setup miniconda
         uses: conda-incubator/setup-miniconda@v2
         with:
-          activate-environment: gh_actions
+          activate-environment: actions
           auto-activate-base: false
 
       # Depends and env info (mostly for debug)
