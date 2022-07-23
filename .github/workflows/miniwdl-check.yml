@@ -27,8 +27,9 @@ jobs:
         id: filter
         with:
           filters: |
-            wf: 
-              - '*.wdl'
+            wf:  
+              - 'tasks/**'
+              - 'workflows/**'
           list-files: json
 
   check:
