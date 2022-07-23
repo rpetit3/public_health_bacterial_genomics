@@ -20,7 +20,7 @@ workflow pmga_wf {
         String pmga_wf_version = version_capture.phbg_version
         String pmga_wf_analysis_date = version_capture.date
         String pmga_version = pmga.version
-        String pmga_docker = pmga.docker
+        String pmga_docker = pmga.pmga_docker
         String pmga_speciesdb = pmga.pmga_speciesdb
         String pmga_serotype = pmga.pmga_serotype
         String pmga_genes = pmga.pmga_genes
