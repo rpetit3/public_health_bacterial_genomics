@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       # Expose workflows with changes
-      workflows: ${{ steps.filter.outputs.wf }}
+      workflows: ${{ steps.filter.outputs.changes }}
     steps:
       # Checkout the repo
       - uses: actions/checkout@v2
@@ -25,19 +25,17 @@ jobs:
       - uses: dorny/paths-filter@v2
         id: filter
         with:
-          filters: |
-            wf:
-              - "workflows/**"
+          filters: "workflows/*"
 
   check:
     runs-on: ubuntu-20.04
-    name: ${{ matrix.tags }}
+    name: ${{ matrix.wf }}
     needs: changes
     if: needs.changes.outputs.workflows == 'true'
     strategy:
       fail-fast: false
       matrix:
-        tags: ["${{ fromJson(needs.changes.outputs.workflows) }}"]
+        wf: ["${{ fromJson(needs.changes.outputs.workflows) }}"]
     steps:
       # Checkout the repo
       - uses: actions/checkout@v2
@@ -53,5 +51,5 @@ jobs:
           sudo apt-get -y install shellcheck
           pip3 -q install miniwdl
 
-      - name: MiniWDL Check ${{ matrix.tags }}
-        run: miniwdl check ${{ matrix.tags }}
+      - name: MiniWDL Check ${{ matrix.wf }}
+        run: miniwdl check ${{ matrix.wf }}
