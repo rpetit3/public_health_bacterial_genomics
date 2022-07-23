@@ -1,0 +1,55 @@
+# 
+# This workflow will run on Pushes and Pull Requests against the main branch. It
+# will only run "miniwdl check" on wdl files that have had a change in the push 
+# or PR.
+#
+name: MiniWDL Check
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  changes:
+    name: Check for changes
+    runs-on: ubuntu-latest
+    outputs:
+      # Expose workflows with changes
+      workflows: ${{ steps.filter.outputs.changes }}
+    steps:
+      # Checkout the repo
+      - uses: actions/checkout@v2
+
+      # Select workflows with changes
+      - uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: "workflows/**/*.wdl"
+
+  check:
+    runs-on: ubuntu-20.04
+    name: ${{ matrix.tags }}
+    needs: changes
+    if: needs.changes.outputs.workflows != '[]'
+    strategy:
+      fail-fast: false
+      matrix:
+        tags: ["${{ fromJson(needs.changes.outputs.workflows) }}"]
+    steps:
+      # Checkout the repo
+      - uses: actions/checkout@v2
+
+      # Install a version of Python3
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: "3.x"
+      - name: install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get -y install shellcheck
+          pip3 -q install miniwdl
+
+      - name: MiniWDL Check ${{ matrix.tags }}
+        run: miniwdl check ${{ matrix.tags }}
