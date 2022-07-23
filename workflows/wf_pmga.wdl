@@ -1,6 +1,6 @@
 version 1.0
 
-import "../tasks/tools/task_pmga.wdl" as pmga
+import "../tasks/species_typing/task_pmga.wdl" as pmga
 import "../tasks/task_versioning.wdl" as versioning
 
 workflow pmga_wf {
@@ -8,7 +8,7 @@ workflow pmga_wf {
         File assembly
         String samplename
     }
-    
+
     call pmga.pmga {
         input:
             assembly = assembly,
