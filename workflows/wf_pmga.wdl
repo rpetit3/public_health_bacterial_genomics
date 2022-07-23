@@ -8,6 +8,7 @@ workflow pmga_wf {
         File assembly
         String samplename
     }
+    
     call pmga.pmga {
         input:
             assembly = assembly,

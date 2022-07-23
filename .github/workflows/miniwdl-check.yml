@@ -42,7 +42,7 @@ jobs:
       # Checkout the repo
       - uses: actions/checkout@v2
 
--     - run: echo ${{ needs.changes.outputs.workflows }}
+      - run: echo ${{ needs.changes.outputs.workflows }}
 
       # Install a version of Python3
       - name: Set up Python
