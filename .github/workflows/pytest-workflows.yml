@@ -16,8 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       # Expose workflows with changes
-      workflows: ${{ steps.filter.outputs.wf }}
-      workflows_files: ${{ steps.filter.outputs.wf_files }}
+      workflows: ${{ steps.filter.outputs.changes }}
     steps:
       # Checkout the repo
       - uses: actions/checkout@v2
@@ -26,7 +25,7 @@ jobs:
       - uses: dorny/paths-filter@v2
         id: filter
         with:
-          filters: filters: "tests/pytest_filter.yml"
+          filters: "tests/config/pytest_filter.yml"
 
   check:
     runs-on: ubuntu-20.04
@@ -36,7 +35,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        tag: ${{ fromJson(needs.changes.outputs.workflows_files) }}
+        tag: ["${{ fromJson(needs.changes.outputs.workflows) }}"]
         engine: ["miniwdl", "cromwell"]
     steps:
       # Checkout the repo
