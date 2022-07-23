@@ -1,0 +1,17 @@
+- name: theiaprok_illumina_pe_cromwell
+  command: cromwell run --inputs ./tests/inputs/wf_theiaprok_illumina_pe.json 
+  tags:
+    - wf_theiaprok_illumina_pe
+    - wf_theiaprok_illumina_pe_cromwell
+  files:
+    - path: summary.tab
+      md5sum: b483a3d6ca1908ab813427b06751e51a
+
+- name: theiaprok_illumina_pe_miniwdl
+  command: miniwdl run --inputs ./tests/inputs/wf_theiaprok_illumina_pe.json 
+  tags:
+    - wf_theiaprok_illumina_pe
+    - wf_theiaprok_illumina_pe_miniwdl
+  files:
+    - path: summary.tab
+      md5sum: b483a3d6ca1908ab813427b06751e51a
