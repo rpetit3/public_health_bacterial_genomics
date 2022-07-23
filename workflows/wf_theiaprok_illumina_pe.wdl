@@ -11,7 +11,6 @@ import "../tasks/gene_typing/task_amrfinderplus.wdl" as amrfinderplus
 import "../tasks/species_typing/task_ts_mlst.wdl" as ts_mlst
 import "../tasks/task_versioning.wdl" as versioning
 import "../tasks/utilities/task_broad_terra_tools.wdl" as terra_tools
-
 workflow theiaprok_illumina_pe {
   meta {
     description: "De-novo genome assembly, taxonomic ID, and QC of paired-end bacterial NGS data"
