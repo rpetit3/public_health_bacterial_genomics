@@ -16,7 +16,8 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       # Expose workflows with changes
-      workflows: ${{ steps.filter.outputs.changes_files }}
+      workflows: ${{ steps.filter.outputs.changes }}
+      workflows_files: ${{ steps.filter.outputs.changes_files }}
     steps:
       # Checkout the repo
       - uses: actions/checkout@v2
@@ -38,7 +39,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        wf: ["${{ fromJson(needs.changes.outputs.workflows) }}"]
+        wf: ["${{ fromJson(needs.changes.outputs.workflows_files) }}"]
     steps:
       # Checkout the repo
       - uses: actions/checkout@v2
