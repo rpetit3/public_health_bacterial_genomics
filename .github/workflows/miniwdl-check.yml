@@ -27,7 +27,7 @@ jobs:
         with:
           filters: |
             wf: 
-              - 'workflows/**''
+              - 'workflows/**'
 
   check:
     runs-on: ubuntu-20.04
