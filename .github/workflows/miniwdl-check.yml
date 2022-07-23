@@ -21,11 +21,16 @@ jobs:
       # Checkout the repo
       - uses: actions/checkout@v2
 
+      - name: debug
+        run: |
+          ls -lha
+          find .
+
       # Select workflows with changes
       - uses: dorny/paths-filter@v2
         id: filter
         with:
-          filters: "workflows/*"
+          filters: "*.wdl"
 
   check:
     runs-on: ubuntu-20.04
