@@ -4,14 +4,12 @@ task pmga {
     meta {
         description: "Serogrouping and serotyping of all Neisseria species and Haemophilus influenzae"
     }
-
     input {
         File assembly
         String samplename
         String docker = "quay.io/staphb/pmga:3.0.2"
         Int? cpu = 4
     }
-
     command <<<
         echo $(pmga --version 2>&1) | sed 's/.*pmga //; s/ .*\$//' | tee VERSION
         pmga \
@@ -27,7 +25,6 @@ task pmga {
         cut -f 4 pmga/~{samplename}.txt | tail -n 1 | tee PMGA_GENES
         cut -f 5 pmga/~{samplename}.txt | tail -n 1 | tee PMGA_NOTES
     >>>
-
     output {
         String version = read_string("VERSION")
         String pmga_docker = "~{docker}"
@@ -42,7 +39,6 @@ task pmga {
         File pmga_loci_counts = "./pmga/~{samplename}-loci-counts.txt"
         File pmga_gff = "./pmga/~{samplename}.gff.gz"
     }
-
     runtime {
         docker: "~{docker}"
         memory: "8 GB"
