@@ -74,7 +74,7 @@ jobs:
         if: failure()
         uses: actions/upload-artifact@v2
         with:
-          name: logs-${{ matrix.tag }}
+          name: logs-${{ matrix.engine }}
           path: |
             /home/runner/pytest_workflow_*/**/stdout*
             /home/runner/pytest_workflow_*/**/stderr*
