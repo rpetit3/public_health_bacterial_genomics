@@ -27,7 +27,7 @@ jobs:
         with:
           filters: |
             wf: 
-              - "workflows/*"
+              - 'workflows/**''
 
   check:
     runs-on: ubuntu-20.04
@@ -41,6 +41,8 @@ jobs:
     steps:
       # Checkout the repo
       - uses: actions/checkout@v2
+
+-     - run: echo ${{ needs.changes.outputs.workflows }}
 
       # Install a version of Python3
       - name: Set up Python
