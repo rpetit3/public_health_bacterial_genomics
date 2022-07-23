@@ -1,5 +1,6 @@
 version 1.0
 
+
 task sistr {
   meta {
     description: "Serovar prediction of Salmonella assemblies"
