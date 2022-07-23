@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       # Expose workflows with changes
-      workflows: ${{ steps.filter.outputs.wf }}
+      workflows: ${{ steps.filter.outputs.changes }}
     steps:
       # Checkout the repo
       - uses: actions/checkout@v2
@@ -33,7 +33,7 @@ jobs:
     runs-on: ubuntu-20.04
     name: ${{ matrix.wf }}
     needs: changes
-    if: needs.changes.outputs.workflows == 'true'
+    if: ${{ needs.changes.outputs.workflows != '[]' && needs.changes.outputs.workflows != '' }}
     strategy:
       fail-fast: false
       matrix:
