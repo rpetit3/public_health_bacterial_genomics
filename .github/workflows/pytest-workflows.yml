@@ -1,9 +1,9 @@
 # 
 # This workflow will run on Pushes and Pull Requests against the main branch. It
-# will only run "miniwdl check" on wdl files that have had a change in the push 
-# or PR.
+# will run pytest with MiniWDL and Cromwell for any workflows with a change to 
+# them or associated tasks.
 #
-name: MiniWDL Check
+name: Pytest Workflows
 on:
   push:
     branches: [main]
